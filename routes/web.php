@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth.basic'])->group(function () {
 
+    Route::get('/teams/sync/xml', [TeamController::class, 'xmlSync']);
     Route::get('/teams/sync', [TeamController::class, 'sync']);
 
 });

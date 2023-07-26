@@ -1,0 +1,28 @@
+config:
+    api_url: "https://api.first.org/data/v1/teams.xml"
+    data_key: data
+    properties:
+        id:
+            key: acronym
+            type: string
+        team:
+            key: name
+            type: string
+        team-full:
+            key: full_name
+            type: string
+        host:
+            key: stadium
+            type: string
+        country:
+            key: country
+            type: string
+        website:
+            key: websites
+            type: array
+        phone:
+            key: phone_numbers
+            type: array
+        member-since:
+            key: membership_date
+            type: date
