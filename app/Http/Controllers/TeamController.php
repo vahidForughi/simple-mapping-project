@@ -23,18 +23,13 @@ class TeamController extends Controller
                 // ->extractWithFactory('json')
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
-<<<<<<< Updated upstream
-            dd($teams[0]);
-=======
 
->>>>>>> Stashed changes
+            // db transaction for save data to database
             DB::beginTransaction();
-
             foreach ($teams as $team) {
                 Team::updateOrCreate($team->toArray());
                 // $team->save();
             }
-
             DB::commit();
 
             return 'successful';
@@ -58,13 +53,12 @@ class TeamController extends Controller
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
 
+            // db transaction for save data to database
             DB::beginTransaction();
-
             foreach ($teams as $team) {
                 Team::updateOrCreate($team->toArray());
                 // $team->save();
             }
-
             DB::commit();
 
             return 'successful';
