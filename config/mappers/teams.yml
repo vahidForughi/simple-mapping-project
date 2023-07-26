@@ -1,6 +1,5 @@
 config:
     api_url: "https://api.first.org/data/v1/teams"
-    data_key: data
     fields:
         id:
             key: acronym
