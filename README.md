@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Simple Mapping Project
 
 Sync data between api and database.
@@ -35,3 +36,12 @@ $data = ApiManager::init('teams')
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
 ```
+=======
+## Mapping Simple Project
+
+Sync data between api and database;
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+>>>>>>> b251af4 (some comment and document)
