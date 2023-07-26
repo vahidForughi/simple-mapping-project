@@ -27,6 +27,6 @@ class ApiManagerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-//        $this->mergeConfigFrom(__DIR__.'/config/mappers', 'mappers');
+        // $this->mergeConfigFrom(__DIR__.'/config/mappers', 'mappers');
     }
 }
