@@ -4,5 +4,5 @@ namespace ApiManager\Classes\DataMapper;
 
 interface MappingStrategyInterface
 {
-    public function mapping($data, $options);
+    public function mapping($data, $fields);
 }

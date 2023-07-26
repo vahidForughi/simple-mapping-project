@@ -3,7 +3,7 @@ version: '3.9'
 config:
     url: "https://"
     data_key: data
-    properties:
+    fields:
         id:
             type: int
             key: id

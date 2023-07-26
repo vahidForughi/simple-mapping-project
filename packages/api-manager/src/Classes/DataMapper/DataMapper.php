@@ -10,8 +10,8 @@ class DataMapper
         $this->mappingStrategy = $mappingStrategy;
     }
 
-    public function mapping($data, $options = []) {
-        return $this->mappingStrategy->mapping($data, $options);
+    public function mapping($data, $fields = []) {
+        return $this->mappingStrategy->mapping($data, $fields);
     }
 
 }

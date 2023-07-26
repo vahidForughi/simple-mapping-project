@@ -1,7 +1,7 @@
 config:
     api_url: "https://api.first.org/data/v1/teams.xml"
     data_key: data
-    properties:
+    fields:
         id:
             key: acronym
             type: string

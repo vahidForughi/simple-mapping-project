@@ -7,8 +7,8 @@ use App\Models\Team;
 
 class TeamsMappingStrategy extends ArrayMappingStrategy
 {
-    public function mapping($data, $options = []) {
-        $mappedData = parent::mapping($data, $options);
+    public function mapping($data, $fields = []) {
+        $mappedData = parent::mapping($data, $fields);
 
         return array_map(fn ($team) => new Team($team) ,$mappedData);
     }

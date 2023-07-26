@@ -2,20 +2,16 @@
 
 namespace ApiManager\Classes\DataMapper;
 
-use Illuminate\Support\Str;
+use ApiManager\Classes\DataMapper\DataTypes\DataType;
 
 class ArrayMappingStrategy extends MappingStrategy implements MappingStrategyInterface
 {
-    private $dataTypesDir = "ApiManager\Classes\DataMapper\DataTypes\\";
 
-    public function mapping($data, $options = []) {
-        return array_map(function($item) use ($options) {
+    public function mapping($data, $fields = []) {
+        return array_map(function($item) use ($fields) {
             $array = [];
-
-            foreach ($options as $key => $option) {
-                $dataType = $this->dataTypesDir.Str::studly($option['type'].'-type');
-
-                $array[$option['key']] = isset($item->{$key}) ? $dataType::convert($item->{$key}) : null;
+            foreach ($fields as $field) {
+                $array[$field->getNewKey()] = isset($item->{$field->getKey()}) ? DataType::convert($field->getType() ,$item->{$field->getKey()}) : null;
             }
             return $array;
         }, $data);

@@ -9,14 +9,21 @@ class YamlConfig implements ApiConfigInterface
     private string $name;
     private string $api_url = 'https://';
     private string $data_key = 'data';
-    private array $properties = [];
+    private array $fields;
 
     public function __construct(string $name) {
         $this->name = $name;
         $config = Yaml::parseFile(config_path('mappers\\'.$this->name.'.yml'))['config'];
         $this->api_url = $config['api_url'];
         $this->data_key = $config['data_key'];
-        $this->properties = $config['properties'];
+        $this->setFields($config['fields']);
+    }
+
+    public function setFields(array $fields) {
+        $this->fields = [];
+        foreach ($fields as $key => $field) {
+            $this->fields[] = new MapperField($field['key'], $key, $field['type']);
+        }
     }
 
     public function getApiUrl(): string {
@@ -27,7 +34,7 @@ class YamlConfig implements ApiConfigInterface
         return $this->data_key;
     }
 
-    public function getProperties(): array {
-        return $this->properties;
+    public function getFields(): array {
+        return $this->fields;
     }
 }

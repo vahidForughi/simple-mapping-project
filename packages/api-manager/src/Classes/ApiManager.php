@@ -54,7 +54,7 @@ class ApiManager
 
     public function mapping(MappingStrategyInterface $mappingStrategy): self {
         $mapper = new DataMapper($mappingStrategy);
-        $this->data = $mapper->mapping($this->data, $this->config->getProperties());
+        $this->data = $mapper->mapping($this->data, $this->config->getFields());
 
         return $this;
     }
