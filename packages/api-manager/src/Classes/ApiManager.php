@@ -6,6 +6,8 @@ use ApiManager\Classes\Config\ApiConfigInterface;
 use ApiManager\Classes\Config\YamlConfig;
 use ApiManager\Classes\ContentManager\ContentManager;
 use ApiManager\Classes\ContentManager\ContentStructureInterface;
+use ApiManager\Classes\DataMapper\DataMapper;
+use ApiManager\Classes\DataMapper\MappingStrategyInterface;
 use ApiManager\Exceptions\ApiFetchException;
 use ApiManager\Exceptions\DataNotFoundException;
 use Illuminate\Support\Facades\Http;
@@ -46,6 +48,13 @@ class ApiManager
             throw new DataNotFoundException;
 
         $this->data = $data;
+
+        return $this;
+    }
+
+    public function mapping(MappingStrategyInterface $mappingStrategy): self {
+        $mapper = new DataMapper($mappingStrategy);
+        $this->data = $mapper->mapping($this->data, $this->config->getProperties());
 
         return $this;
     }
