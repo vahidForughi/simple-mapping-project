@@ -23,7 +23,11 @@ class TeamController extends Controller
                 // ->extractWithFactory('json')
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
+<<<<<<< Updated upstream
             dd($teams[0]);
+=======
+
+>>>>>>> Stashed changes
             DB::beginTransaction();
 
             foreach ($teams as $team) {

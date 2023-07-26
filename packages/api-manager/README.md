@@ -9,7 +9,6 @@ config/mappers/sample.yml
 ```yaml
 config:
     url: "https://"
-    data_key: data
     fields:
         id:
             type: int

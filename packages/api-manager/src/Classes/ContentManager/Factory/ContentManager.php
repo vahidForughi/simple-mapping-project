@@ -2,7 +2,7 @@
 
 namespace ApiManager\Classes\ContentManager\Factory;
 
-class ContentManager
+class ContentManager extends AbstractContentManager
 {
     private $content;
 
