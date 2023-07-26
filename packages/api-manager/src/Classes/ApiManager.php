@@ -4,13 +4,17 @@ namespace ApiManager\Classes;
 
 use ApiManager\Classes\Config\ApiConfigInterface;
 use ApiManager\Classes\Config\YamlConfig;
+use ApiManager\Classes\ContentManager\ContentManager;
+use ApiManager\Classes\ContentManager\ContentStructureInterface;
 use ApiManager\Exceptions\ApiFetchException;
+use ApiManager\Exceptions\DataNotFoundException;
 use Illuminate\Support\Facades\Http;
 
 class ApiManager
 {
     private ApiConfigInterface $config;
-    private object $content;
+    private $content;
+    private $data;
 
     public function init(string $name): self {
         $this->config = new YamlConfig($name);
@@ -21,17 +25,32 @@ class ApiManager
     public function fetch(): self {
         $response = Http::get($this->config->getApiUrl());
         if ($response->ok() && ($response->body() <> ''))
-            $this->setContent($response->object());
+            $this->setContent($response->body());
         else
             throw new ApiFetchException;
 
         return $this;
     }
 
-    public function setContent(object $content): self {
+    public function setContent($content): self {
         $this->content = $content;
 
         return $this;
     }
 
+    public function extract(ContentStructureInterface $contentStructure) {
+        $contentManager = new ContentManager($this->content, $contentStructure);
+        $data = $contentManager->extractData();
+
+        if (!$data)
+            throw new DataNotFoundException;
+
+        $this->data = $data;
+
+        return $this;
+    }
+
+    public function getData() {
+        return $this->data;
+    }
 }
