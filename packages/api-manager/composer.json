@@ -1,0 +1,40 @@
+{
+    "name": "api-manager",
+    "description": "Api Manager For Laravel Aplications.",
+    "keywords": [
+        "api",
+        "manager",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "VahidForughi",
+            "email": "forughi.vahid@yahoo.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "illuminate/support": "~5"
+    },
+    "require-dev": {},
+    "config": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+              "ApiManager\\ApiManagerServiceProvider"
+            ],
+            "aliases": {
+                "ApiManager": "ApiManager\\Facades\\ApiManager"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "ApiManager\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {}
+}
