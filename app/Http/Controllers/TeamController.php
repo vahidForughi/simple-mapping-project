@@ -19,11 +19,9 @@ class TeamController extends Controller
         try {
             $teams = ApiManager::init('teams')
                 ->fetch()   // you can setContent instead
-                ->extractWithStrategy(new JsonStructure())
-                // ->extractWithFactory('json')
+                ->extractWithStrategy(new JsonStructure()) // or ->extractWithFactory('json')
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
-            dd($teams[0]);
             DB::beginTransaction();
 
             foreach ($teams as $team) {
@@ -50,7 +48,7 @@ class TeamController extends Controller
         try {
             $teams = ApiManager::init('teams-xml')
                 ->fetch()
-                ->extractWithStrategy(new XmlStructure())
+                ->extractWithStrategy(new XmlStructure()) // or ->extractWithFactory('xml')
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
 
