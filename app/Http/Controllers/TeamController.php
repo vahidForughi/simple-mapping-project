@@ -22,10 +22,8 @@ class TeamController extends Controller
                 ->extractWithStrategy(new JsonStructure()) // or ->extractWithFactory('json')
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
-<<<<<<< HEAD
-=======
+
             DB::beginTransaction();
->>>>>>> b251af4 (some comment and document)
 
             // db transaction for save data to database
             DB::beginTransaction();
