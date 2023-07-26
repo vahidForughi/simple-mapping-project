@@ -16,7 +16,7 @@ config:
             type: string
         country:
             key: country
-            type: string
+            type: html
         website:
             key: websites
             type: array
