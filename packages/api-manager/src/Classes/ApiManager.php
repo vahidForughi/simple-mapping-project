@@ -4,16 +4,24 @@ namespace ApiManager\Classes;
 
 use ApiManager\Classes\Config\ApiConfigInterface;
 use ApiManager\Classes\Config\YamlConfig;
-use ApiManager\Classes\ContentManager\ContentManager;
-use ApiManager\Classes\ContentManager\ContentStructureInterface;
+use ApiManager\Classes\ContentManager\Factory\ContentInterface;
+use ApiManager\Classes\ContentManager\Strategy\ContentStructureInterface;
 use ApiManager\Classes\DataMapper\DataMapper;
 use ApiManager\Classes\DataMapper\MappingStrategyInterface;
+use ApiManager\Classes\traits\FactoryContentExtractor;
+use ApiManager\Classes\traits\StrategyContentExtractor;
+use ApiManager\Classes\traits\VisitorContentExtractor;
 use ApiManager\Exceptions\ApiFetchException;
 use ApiManager\Exceptions\DataNotFoundException;
 use Illuminate\Support\Facades\Http;
 
 class ApiManager
 {
+    use
+        StrategyContentExtractor,
+        FactoryContentExtractor,
+        VisitorContentExtractor;
+
     private ApiConfigInterface $config;
     private $content;
     private $data;
@@ -36,18 +44,6 @@ class ApiManager
 
     public function setContent($content): self {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function extract(ContentStructureInterface $contentStructure) {
-        $contentManager = new ContentManager($this->content, $contentStructure);
-        $data = $contentManager->extractData();
-
-        if (!$data)
-            throw new DataNotFoundException;
-
-        $this->data = $data;
 
         return $this;
     }

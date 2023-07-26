@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiManager\Classes\ContentManager;
+namespace ApiManager\Classes\ContentManager\Strategy;
 
 class ContentManager
 {
