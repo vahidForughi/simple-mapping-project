@@ -13,7 +13,11 @@ class ApiManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/config/mappers/sample.yml' => config_path('sample.yml'),
+            ], 'mappers-config');
+        }
     }
 
     /**
@@ -23,6 +27,6 @@ class ApiManagerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+//        $this->mergeConfigFrom(__DIR__.'/config/mappers', 'mappers');
     }
 }

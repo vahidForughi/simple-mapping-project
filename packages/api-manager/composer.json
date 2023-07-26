@@ -15,7 +15,8 @@
     ],
     "license": "MIT",
     "require": {
-        "illuminate/support": "~5"
+        "illuminate/support": "~5",
+        "symfony/yaml": "^6.3"
     },
     "require-dev": {},
     "config": {},

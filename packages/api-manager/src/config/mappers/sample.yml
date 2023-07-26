@@ -1,0 +1,18 @@
+version: '3.9'
+
+config:
+    url: "https://"
+    data_key: data
+    properties:
+        id:
+            type: int
+            key: id
+        title:
+            type: string
+            key: name
+        abilities:
+            type: array
+            key: permissions
+        created_at:
+            type: date
+            key: generated_at
