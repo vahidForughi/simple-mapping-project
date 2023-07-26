@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use ApiManager
+
 class TeamController extends Controller
 {
     /**
@@ -10,5 +12,8 @@ class TeamController extends Controller
     public function sync(Request $request)
     {
         // TODO: We should fetch and mapping an api
+        $apiManager = ApiManager::init()
+                        ->fetch();
+        dd($apiManager);
     }
 }
