@@ -23,8 +23,6 @@ class TeamController extends Controller
                 ->mapping(new TeamsMappingStrategy())
                 ->getData();
 
-            DB::beginTransaction();
-
             // db transaction for save data to database
             DB::beginTransaction();
             foreach ($teams as $team) {
