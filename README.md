@@ -2,8 +2,31 @@
 
 Sync data between api and database.
 
-## Usage
+## Installation
 
+add packages:
+```bash
+composer install
+```
+
+database initialize:
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+run server:
+```bash
+php artisan serve
+```
+
+basic auth 
+```
+username: test@test.com
+pass: password
+```
+
+## Usage
 
 config/mappers/sample.yml
 ```yaml
